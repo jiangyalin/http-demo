@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post('/upload', function (req, res) {
   console.log('post.upload.query', req.query)
-  console.log('ost.upload.body', req.body)
+  console.log('post.upload.body', req.body)
 
   let busboy = new Busboy({ headers: req.headers })
   req.pipe(busboy)

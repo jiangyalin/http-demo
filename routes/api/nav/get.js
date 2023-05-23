@@ -4,6 +4,7 @@ const router = express.Router()
 router.get('/get', function (req, res) {
   console.log('get.query', req.query)
   console.log('get.body', req.body)
+  console.log('get.path', req.params)
 
   const data = {
     code: 200,

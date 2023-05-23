@@ -4,6 +4,7 @@ const router = express.Router()
 router.delete('/delete', function (req, res) {
   console.log('delete.query', req.query)
   console.log('delete.body', req.body)
+  console.log('delete.path', req.params)
 
   const data = {
     code: 200,

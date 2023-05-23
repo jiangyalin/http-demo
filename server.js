@@ -5,26 +5,14 @@ const pkg = require('./package')
 const routes = require('./routes/')
 const bodyParser = require('body-parser')
 
-// 处理表单及文件上传的中间件
-// app.use(require('express-formidable')({
-//     uploadDir: path.join(__dirname, 'static/public/img'), // 上传文件目录
-//     keepExtensions: true, // 保留后缀
-//     multiples: true
-// }));
-// app.use(formidable({
-//     encoding: 'utf-8',
-//     uploadDir: path.join(__dirname, 'static/public/img'),
-//     keepExtensions: true, // 保留后缀
-//     multiples: true
-// }));
-
 // 路由重定向不能与接口同时使用
 // app.use(history());
 
 // 跨域
 app.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild, languageCode, x-auth-token, token')
+  res.header('Access-Control-Allow-Headers', 'Content-Type')
+  // res.header('Access-Control-Allow-Headers', '')
   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS, PATCH')
 
   if (req.method === 'OPTIONS') {

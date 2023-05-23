@@ -2,8 +2,9 @@ const express = require('express')
 const router = express.Router()
 
 router.put('/put', function (req, res) {
-  console.log('get.query', req.query)
-  console.log('get.body', req.body)
+  console.log('put.query', req.query)
+  console.log('put.body', req.body)
+  console.log('put.path', req.params)
 
   const data = {
     code: 200,

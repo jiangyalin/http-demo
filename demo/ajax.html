@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<p>这是一个测试页面</p>
+<ul>
+  <li>
+    <button class="j-get" type="button">get</button>
+  </li>
+  <li>
+    <button class="j-post" type="button">post</button>
+  </li>
+  <li>
+    <button class="j-delete" type="button">delete</button>
+  </li>
+  <li>
+    <button class="j-put" type="button">put</button>
+  </li>
+  <li>
+    <button class="j-path" type="button">get.path</button>
+  </li>
+</ul>
+</body>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script>
+  const apiServer = 'http://192.168.3.12:8080'
+
+  // get
+  document.querySelector('.j-get').onclick = function () {
+    axios({
+      method: 'get',
+      url: apiServer + '/api/nav/get',
+      params: {
+        name: '这是一个query中的测试参数'
+      },
+      data: {
+        name: '这是一个body中的测试参数'
+      },
+      headers: {
+        // 'user-name': 'jake'
+      }
+    }).then(res => {
+      console.log('res', res)
+    })
+  }
+
+  // post
+  document.querySelector('.j-post').onclick = function () {
+    axios({
+      method: 'post',
+      url: apiServer + '/api/nav/post',
+      params: {
+        name: '这是一个query中的测试参数'
+      },
+      data: {
+        name: '这是一个body中的测试参数'
+      }
+    }).then(res => {
+      console.log('res', res)
+    })
+  }
+
+  // delete
+  document.querySelector('.j-delete').onclick = function () {
+    axios({
+      method: 'delete',
+      url: apiServer + '/api/nav/delete',
+      params: {
+        name: '这是一个query中的测试参数'
+      },
+      data: {
+        name: '这是一个body中的测试参数'
+      }
+    }).then(res => {
+      console.log('res', res)
+    })
+  }
+
+  // put
+  document.querySelector('.j-put').onclick = function () {
+    axios({
+      method: 'put',
+      url: apiServer + '/api/nav/put',
+      params: {
+        name: '这是一个query中的测试参数'
+      },
+      data: {
+        name: '这是一个body中的测试参数'
+      }
+    }).then(res => {
+      console.log('res', res)
+    })
+  }
+
+  // get.path
+  document.querySelector('.j-path').onclick = function () {
+    axios({
+      method: 'get',
+      url: apiServer + '/api/nav/path/' + 333,
+      params: {
+        name: '这是一个query中的测试参数'
+      },
+      data: {
+        name: '这是一个body中的测试参数'
+      }
+    }).then(res => {
+      console.log('res', res)
+    })
+  }
+</script>
+</html>
