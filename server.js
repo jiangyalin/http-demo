@@ -1,5 +1,6 @@
 const path = require('path')
 const express = require('express')
+const os = require('os')
 const app = express()
 const pkg = require('./package')
 const routes = require('./routes/')
@@ -35,8 +36,22 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 
 routes(app)
 
+const getIpAddress = () => {
+  const interfaces = os.networkInterfaces()
+  for (const dev in interfaces) {
+    const iface = interfaces[dev]
+    for (let i = 0; i < iface.length; i++) {
+      const { family, address, internal } = iface[i]
+      if (family === 'IPv4' && address !== '127.0.0.1' && !internal) {
+        return address
+      }
+    }
+  }
+}
+
 const port = 8080
-app.listen(port, function () {
+app.listen(port, () => {
   console.log('服务启动' + port)
+  console.log('http://' + getIpAddress() + ':' + port)
 })
 
